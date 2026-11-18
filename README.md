@@ -1,21 +1,25 @@
+-- Usar Laragon
 Abre Laragon → Terminal.
 
-Entra a tu proyecto:
+-- Entra a tu proyecto:
 cd C:\laragon\www\aula-3d
 
+-- Importar la base de datos:
+database/
 
-Para instalar dependencias y compilar:
+-- Para instalar dependencias y compilar:
+
 npm install
 npm run build
 
 
-Para iniciar el servidor multijugador, abre una segunda terminal de Laragon:
+-- Para iniciar el servidor multijugador, abre una segunda terminal de Laragon:
+
 cd C:\laragon\www\aula-3d
 npm run multiplayer
 
 
-Deja abierta esa segunda terminal mientras se utilice el campus virtual.
+-- Deja abierta esa segunda terminal mientras se utilice el campus virtual.
 
-
-Acceso:
+-- Acceso:
 http://localhost:8081/aula-3d/login.php
