@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Aula 3D | Laboratorio de redes</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/lab.css">
+  <script type="importmap">
+    {"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/"}}
+  </script>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">3D</span><div><strong>Laboratorio de redes</strong><small>Aula de informática · SENATI</small></div></div>
+    <div class="top-actions">
+      <span id="scene-label" class="scene-label">Vista sin techo</span>
+      <button id="show-stations" class="btn" aria-controls="controls" aria-expanded="true">Puestos</button>
+      <button id="toggle-roof" class="btn primary">Activar techo</button>
+      <button id="reset-camera" class="btn">Centrar cámara</button>
+      <button id="vr-fallback" class="btn" title="La opción VR aparece si el navegador detecta un visor compatible">Modo VR</button>
+    </div>
+  </header>
+  <aside id="controls" class="sidebar">
+    <div class="side-head"><div><h2>Puestos del aula</h2></div><button id="collapse-panel" class="icon-btn" aria-label="Ocultar panel">‹</button></div>
+    <section class="panel-section">
+      <h3>Reto de conectividad</h3>
+      <p class="tip">Configura tu PC y haz ping a la de un compañero. Selecciona un monitor o una mesa o abre un puesto desde esta lista.</p>
+      <form id="station-picker"><label for="station-list">Puesto virtual</label><select id="station-list" required></select><button class="btn" type="submit">Abrir PC</button></form>
+      <p id="lab-progress" class="tip" role="status"></p>
+    </section>
+    <section class="panel-section">
+      <h3>Elementos del aula</h3>
+      <label class="switch-row"><span><b>Personas</b><small>Estudiantes sentados en los puestos</small></span><input type="checkbox" data-feature="Personas" checked><i></i></label>
+      <label class="switch-row"><span><b>Ventiladores</b><small>2 ventiladores centrales</small></span><input type="checkbox" data-feature="Ventiladores" checked><i></i></label>
+      <label class="switch-row"><span><b>Fluorescentes</b><small>4 luminarias rectangulares</small></span><input type="checkbox" data-feature="Fluorescentes" checked><i></i></label>
+      <label class="switch-row"><span><b>Proyector</b><small>Proyector y haz de luz</small></span><input type="checkbox" data-feature="Proyector" checked><i></i></label>
+    </section>
+    <section class="panel-section">
+      <h3>Visualización</h3>
+      <label class="switch-row"><span><b>Techo</b><small>Mostrar u ocultar el techo</small></span><input id="roof-switch" type="checkbox"><i></i></label>
+      <label class="switch-row"><span><b>Sombras</b><small>Sombras de mobiliario y personas</small></span><input id="shadow-switch" type="checkbox" checked><i></i></label>
+    </section>
+    <section class="panel-section">
+      <h3>Movimiento</h3>
+      <div class="key-grid"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div>
+      <p class="muted">Moverse por el aula</p>
+      <div class="key-grid compact"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd><kbd>Q</kbd><kbd>E</kbd></div>
+      <p class="muted">Girar la vista · Q/E subir y bajar</p>
+      <p class="tip">En VR: pulsa «Modo VR» con un visor compatible. Se recomienda abrir mediante HTTPS o localhost.</p>
+    </section>
+    <div class="side-foot"><span class="status-dot"></span><span id="status">Escena lista</span></div>
+  </aside>
+  <main id="viewport" aria-label="Aula 3D interactiva">
+    <div class="canvas-hint">Arrastra para orbitar · Rueda para zoom · WASD para caminar</div>
+  </main>
+</div>
+<dialog id="lab-dialog" aria-labelledby="lab-title">
+  <div class="lab-heading"><h2 id="lab-title"></h2><button id="lab-close" class="btn" type="button">Cerrar</button></div>
+  <p id="lab-message" role="status"></p>
+  <form id="lab-config">
+    <label>Nombre o alias<input name="name" maxlength="60" autocomplete="off" required></label>
+    <label>IPv4 virtual<input name="ip" maxlength="15" placeholder="192.168.50.11" required></label>
+    <label>MAC virtual<input name="mac" maxlength="17" placeholder="02:00:00:00:00:11" required></label>
+    <button class="btn primary" type="submit">Guardar configuración</button>
+  </form>
+  <form id="lab-ping">
+    <label>PC de destino<select name="target" required></select></label>
+    <button class="btn primary" type="submit">Hacer ping</button>
+  </form>
+  <pre id="lab-output" role="status" aria-label="Resultado del ping"></pre>
+</dialog>
+<script type="module" src="./js/lab.js"></script>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

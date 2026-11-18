@@ -1,0 +1,21 @@
+#station-picker, #lab-config, #lab-ping { display: grid; gap: .65rem; }
+#lab-dialog {
+  width: min(440px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 1.25rem;
+  color: #eaf4ff;
+  background: #111c2e;
+  border: 1px solid #385471;
+  border-radius: 16px;
+}
+#lab-dialog::backdrop { background: #07101acc; }
+.lab-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.lab-heading h2 { margin: 0; }
+#lab-dialog label { display: grid; gap: .3rem; }
+#lab-dialog input, #lab-dialog select, #station-list {
+  width: 100%; padding: .55rem; color: #eff7ff; background: #1b2d44;
+  border: 1px solid #486381; border-radius: 6px;
+}
+#lab-ping { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #385471; }
+#lab-output { white-space: pre-wrap; overflow-wrap: anywhere; color: #9ce9c9; }
+#lab-dialog button:disabled { opacity: .5; cursor: default; }
